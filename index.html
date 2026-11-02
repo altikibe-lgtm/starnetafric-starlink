@@ -763,7 +763,7 @@
       width: 100%;
       max-width: 430px;
       height: 100%;
-      max-height: min(900px, 100dvh);   /* never taller than the visible viewport */
+      max-height: 900px;
       background: #fff;
       border-radius: 44px;
       overflow: hidden;
@@ -777,16 +777,13 @@
       position: relative;
       width: 100%;
       height: 52vh;
-      max-height: 340px;          /* caps hero on tall phones */
-      flex-shrink: 1;             /* allows hero to shrink when space is tight */
-      min-height: 140px;
+      flex-shrink: 0;
       overflow: hidden;
       transition: height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     #trial-view .hero.shrunk {
       height: 38vh;
-      max-height: 240px;
     }
 
     #trial-view .hero img,
@@ -852,12 +849,10 @@
     /* Form */
     #trial-view .form-section {
       flex: 1;
-      min-height: 0;              /* allows flex child to shrink instead of overflow */
-      overflow-y: auto;           /* scroll instead of clipping the button */
-      -webkit-overflow-scrolling: touch;
-      padding: 24px 26px calc(28px + env(safe-area-inset-bottom, 0px));
+      padding: 24px 26px 28px;
       display: flex;
       flex-direction: column;
+      overflow: hidden;
     }
 
     #trial-view h1 {
@@ -974,20 +969,6 @@
     @media (max-width: 430px) {
       #trial-view { background: #fff; }
       #trial-view .frame { border-radius: 0; box-shadow: none; max-height: 100%; }
-    }
-
-    @media (max-height: 700px) {
-      #trial-view .hero,
-      #trial-view .hero.shrunk { height: 30vh; max-height: 200px; min-height: 120px; }
-      #trial-view .form-section { padding-top: 16px; padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px)); }
-      #trial-view h1 { font-size: 20px; margin-bottom: 14px; }
-      #trial-view .field-row + .field-row { margin-top: 14px; }
-    }
-
-    @media (max-height: 560px) {
-      #trial-view .hero,
-      #trial-view .hero.shrunk { height: 22vh; max-height: 140px; min-height: 90px; }
-      #trial-view .login-btn { padding: 12px; }
     }
 
     /* ============================================================
